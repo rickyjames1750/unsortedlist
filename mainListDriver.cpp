@@ -28,15 +28,15 @@ int main()
 
 
   // Prompt for file names, read file names, and prepare files
-  cout << "Enter name of input command file; press return." << endl;
+  cout << "Enter name of input command file and press return: " << endl;
   cin  >> inFileName;
   inFile.open(inFileName.c_str());
 
-  cout << "Enter name of output file; press return." << endl;
+  cout << "Enter name of output file and press return: " << endl;
   cin  >> outFileName;
   outFile.open(outFileName.c_str());
 
-  cout << "Enter name of test run; press return." << endl;
+  cout << "Enter name of test run and press return: " << endl;
   cin  >> outputLabel;
   outFile << outputLabel << endl;
   if (!inFile)
