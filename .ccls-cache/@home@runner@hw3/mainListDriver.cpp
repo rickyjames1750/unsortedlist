@@ -8,6 +8,8 @@
 #include "unsorted.h"
 
 using namespace std;
+
+
 void PrintList(ofstream& outFile, UnsortedType& list);
 
 int main()
@@ -15,16 +17,17 @@ int main()
 
   ifstream inFile;       // file containing operations
   ofstream outFile;      // file containing output
-  string inFileName;     // input file external name
-  string outFileName;    // output file external name
-  string outputLabel;     
-  string command;        // operation to be executed
+  string inFileName, outFileName, outputLabel, command; 
+  // input file external name
+  //string outFileName;    // output file external name
+  //string outputLabel;     
+  //string command;        // operation to be executed
   
   int number;
   ItemType item;
   UnsortedType list;
   bool found;
-  int numCommands;
+  int numCommands = 0;
 
 
   // Prompt for file names, read file names, and prepare files
@@ -46,7 +49,12 @@ int main()
   }
   inFile >> command;
 
-  numCommands = 0;
+
+
+
+  
+
+  //numCommands = 0;
   while (command != "Quit")
   { 
     if (command == "PutItem")
@@ -100,22 +108,19 @@ int main()
 }
 
 
+
+
+
+
+
 void PrintList(ofstream& dataFile, UnsortedType& list)
-// Pre:  list has been initialized.      
-//       dataFile is open for writing.   
-// Post: Each component in list has been written to dataFile.
-//       dataFile is still open.         
 {
-  int length;
-  ItemType item;
+    ItemType item;
 
-  list.ResetList();
-  length = list.GetLength();
-  for (int counter = 1; counter <= length; counter++)
-  {
-    item = list.GetNextItem();
-    item.Print(dataFile);
-  }
-  dataFile << endl;
+    for (list.ResetList(); !list.EndOfList(); )
+    {
+        item = list.GetNextItem();
+        item.Print(dataFile);
+    }
+    dataFile << endl;
 }
-

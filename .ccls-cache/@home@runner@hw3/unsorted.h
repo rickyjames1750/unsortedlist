@@ -67,7 +67,11 @@ public:
   //
   // Post: Current position is updated to next position.
   //       item is a copy of element at current position.
-
+  bool EndOfList()
+  {
+      return (currentPos == NULL);
+  }
+  
 private:
   NodeType *listData;
   int length;
