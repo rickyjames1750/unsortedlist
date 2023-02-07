@@ -11,11 +11,11 @@
 //       EQUAL, if self and item are the same
 struct NodeType;
 
-class UnsortedType {
+class UnsortedListClass {
 public:
-  UnsortedType();
+  UnsortedListClass();
   // Constructor
-  ~UnsortedType();
+  ~UnsortedListClass();
   // Destructor
   void MakeEmpty();
   // Function: Returns the list to the empty state.

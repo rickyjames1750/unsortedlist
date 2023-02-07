@@ -10,7 +10,7 @@
 using namespace std;
 
 
-void PrintList(ofstream& outFile, UnsortedType& list);
+void PrintList(ofstream& outFile, UnsortedListClass& list);
 
 int main()
 {
@@ -25,7 +25,7 @@ int main()
   
   int number;
   ItemType item;
-  UnsortedType list;
+  UnsortedListClass list;
   bool found;
   int numCommands = 0;
 
@@ -113,7 +113,7 @@ int main()
 
 
 
-void PrintList(ofstream& dataFile, UnsortedType& list)
+void PrintList(ofstream& dataFile, UnsortedListClass& list)
 {
     ItemType item;
 

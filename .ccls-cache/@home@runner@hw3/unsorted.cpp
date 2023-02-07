@@ -1,8 +1,7 @@
-
 // Also known as unsorted.cpp 
 
 // This file contains the linked implementation of class
-// UnsortedType.
+// UnsortedType aka UnsortedListClass.
 
 #include "unsorted.h"
 struct NodeType
@@ -11,12 +10,12 @@ struct NodeType
     NodeType* next;
 };
 
-UnsortedType::UnsortedType()  // Class constructor
+UnsortedListClass::UnsortedListClass()  // Class constructor
 {
   length = 0;
   listData = NULL;
 }
-bool UnsortedType::IsFull() const
+bool UnsortedListClass::IsFull() const
 // Returns true if there is no room for another ItemType 
 //  on the free store; false otherwise.
 {
@@ -33,13 +32,13 @@ bool UnsortedType::IsFull() const
   }
 }
 
-int UnsortedType::GetLength() const
+int UnsortedListClass::GetLength() const
 // Post: Number of items in the list is returned.
 {
   return length;
 }
 
-void UnsortedType::MakeEmpty()
+void UnsortedListClass::MakeEmpty()
 // Post: List is empty; all items have been deallocated.
 {
   NodeType* tempPtr;
@@ -52,7 +51,7 @@ void UnsortedType::MakeEmpty()
   }
   length = 0;
 }
-void UnsortedType::PutItem(ItemType item)
+void UnsortedListClass::PutItem(ItemType item)
 // item is in the list; length has been incremented.
 {
   NodeType* location;			// Declare a pointer to a node
@@ -66,7 +65,7 @@ void UnsortedType::PutItem(ItemType item)
   length++;				// Increment length of the list
 }
 
-ItemType UnsortedType::GetItem(ItemType& item, bool& found)
+ItemType UnsortedListClass::GetItem(ItemType& item, bool& found)
 // Pre:  Key member(s) of item is initialized.
 // Post: If found, item's key matches an element's key in the 
 //       list and a copy of that element has been stored in item;
@@ -95,7 +94,7 @@ ItemType UnsortedType::GetItem(ItemType& item, bool& found)
   return item;
 }
 
- void UnsortedType::DeleteItem(ItemType item)
+ void UnsortedListClass::DeleteItem(ItemType item)
 // Pre:  item's key has been initialized.
 //       An element in the list has a key that matches item's.
 // Post: No element in the list has a key that matches item's.
@@ -122,13 +121,13 @@ ItemType UnsortedType::GetItem(ItemType& item, bool& found)
   length--;
 }
 
-void UnsortedType::ResetList()
+void UnsortedListClass::ResetList()
 // Post: Current position has been initialized.
 {
   currentPos = NULL;
 }
  
-ItemType UnsortedType::GetNextItem()
+ItemType UnsortedListClass::GetNextItem()
 // Post:  A copy of the next item in the list is returned.
 //        When the end of the list is reached, currentPos
 //        is reset to begin again.
@@ -142,7 +141,7 @@ ItemType UnsortedType::GetNextItem()
   return item;
 }
 
-UnsortedType::~UnsortedType()
+UnsortedListClass::~UnsortedListClass()
 // Post: List is empty; all items have been deallocated.
 {
   NodeType* tempPtr;
