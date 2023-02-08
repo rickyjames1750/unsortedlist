@@ -10,7 +10,37 @@
 using namespace std;
 
 
+//void PrintList(ofstream& outFile, UnsortedListClass& list);
+// silly mistake I kept on re-using the PrintList twice with different prototypes one as an enum and the other as the function all the way at the bottom
+// fixed this by just re-naming the the PrintList to PrintListNew
+
+enum Command {
+    PutItem,
+    DeleteItem,
+    GetItem,
+    GetLength,
+    IsFull,
+    MakeEmpty,
+    PrintListNew,
+    Quit
+};
+
 void PrintList(ofstream& outFile, UnsortedListClass& list);
+Command ReadCommand(ifstream& inFile, int& item);
+
+Command MapCommand(const std::string &command) {
+    if (command == "PutItem") return PutItem;
+    if (command == "DeleteItem") return DeleteItem;
+    if (command == "GetItem") return GetItem;
+    if (command == "GetLength") return GetLength;
+    if (command == "IsFull") return IsFull;
+    if (command == "MakeEmpty") return MakeEmpty;
+    if (command == "PrintList") return PrintListNew;
+    if (command == "Quit") return Quit;
+
+    return Quit;
+}
+
 
 int main()
 {
@@ -56,46 +86,50 @@ int main()
 
   //numCommands = 0;
   while (command != "Quit")
-  { 
-    if (command == "PutItem")
+  {
+    switch (MapCommand(command)) 
     {
-      inFile >> number; 
-      item.Initialize(number);
-      list.PutItem(item);
-      item.Print(outFile);
-      outFile << " is in list" << endl;
+      case PutItem:
+        inFile >> number; 
+        item.Initialize(number);
+        list.PutItem(item);
+        item.Print(outFile);
+        outFile << " is in list" << endl;
+        break;
+      case DeleteItem:
+        inFile >> number;
+        item.Initialize(number);
+        list.DeleteItem(item);
+        item.Print(outFile);
+        outFile << " is deleted" << endl;
+        break;
+      case GetItem:
+        inFile >> number;
+        item.Initialize(number);
+        item = list.GetItem(item, found);
+        item.Print(outFile);
+        if (found)
+          outFile << " found in list." << endl;
+        else outFile <<  " not in list."  << endl;  
+        break;
+      case GetLength:
+        outFile << "Length is " << list.GetLength() << endl;
+        break;
+      case IsFull:
+        if (list.IsFull())
+          outFile << "List is full." << endl;
+        else outFile << "List is not full."  << endl;  
+        break;
+      case MakeEmpty:
+        list.MakeEmpty();
+        break;
+      case PrintListNew:
+        PrintList(outFile, list);
+        break;
+      default:
+        cout << command << " is not a valid command." << endl;
     }
-    else if (command == "DeleteItem")
-    {
-      inFile >> number;
-      item.Initialize(number);
-      list.DeleteItem(item);
-      item.Print(outFile);
-      outFile << " is deleted" << endl;
-    }
-    else if (command == "GetItem")
-    {
-      inFile >> number;
-      item.Initialize(number);
-      item = list.GetItem(item, found);
-      item.Print(outFile);
-      if (found)
-        outFile << " found in list." << endl;
-      else outFile <<  " not in list."  << endl;  
-    } 
-    else if (command == "GetLength")  
-      outFile << "Length is " << list.GetLength() << endl;
-    else if (command == "IsFull")
-      if (list.IsFull())
-        outFile << "List is full." << endl;
-      else outFile << "List is not full."  << endl;  
-    else if (command == "MakeEmpty")
-	  list.MakeEmpty();
-	else if (command == "PrintList")
-	  PrintList(outFile, list);
-	else
-	  cout << command << " is not a valid command." << endl;
-	numCommands++;
+    numCommands++;
     cout <<  " Command number " << numCommands << " completed." 
          << endl;
     inFile >> command;
@@ -124,3 +158,4 @@ void PrintList(ofstream& dataFile, UnsortedListClass& list)
     }
     dataFile << endl;
 }
+
