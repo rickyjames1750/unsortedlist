@@ -1,3 +1,17 @@
+/*
+
+Project: Unsorted List
+
+Authors: 
+Ricky Sparks      
+Jeremia Subido  
+Omar Arreola      
+
+Course: CS 301-03 
+Assignment Number: Assignment 3
+Team: Group 2 
+
+*/
 // Test driver
 #include <iostream>
 #include <fstream>
@@ -11,7 +25,7 @@ using namespace std;
 
 
 //void PrintList(ofstream& outFile, UnsortedListClass& list);
-// silly mistake I kept on re-using the PrintList twice with different prototypes one as an enum and the other as the function all the way at the bottom
+// silly mistake we kept on re-using the PrintList twice with different prototypes one as an enum and the other as the function all the way at the bottom
 // fixed this by just re-naming the the PrintList to PrintListNew
 
 enum Command {
@@ -41,7 +55,6 @@ Command MapCommand(const std::string &command) {
     return Quit;
 }
 
-
 int main()
 {
 
@@ -58,7 +71,6 @@ int main()
   UnsortedListClass list;
   bool found;
   int numCommands = 0;
-
 
   // Prompt for file names, read file names, and prepare files
   cout << "Enter name of input command file and press return: " << endl;
@@ -78,12 +90,7 @@ int main()
 	exit(2);
   }
   inFile >> command;
-
-
-
-
   
-
   //numCommands = 0;
   while (command != "Quit")
   {
@@ -141,12 +148,6 @@ int main()
   return 0;
 }
 
-
-
-
-
-
-
 void PrintList(ofstream& dataFile, UnsortedListClass& list)
 {
     ItemType item;
@@ -158,4 +159,3 @@ void PrintList(ofstream& dataFile, UnsortedListClass& list)
     }
     dataFile << endl;
 }
-

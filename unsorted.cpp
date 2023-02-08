@@ -1,3 +1,18 @@
+/*
+
+Project: Unsorted List
+
+Authors: 
+Ricky Sparks      
+Jeremia Subido  
+Omar Arreola      
+
+Course: CS 301-03 
+Assignment Number: Assignment 3
+Team: Group 2 
+
+*/
+
 // Also known as unsorted.cpp 
 
 // This file contains the linked implementation of class

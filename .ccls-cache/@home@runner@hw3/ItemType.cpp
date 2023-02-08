@@ -1,3 +1,17 @@
+/*
+
+Project: Unsorted List
+
+Authors: 
+Ricky Sparks      
+Jeremia Subido  
+Omar Arreola      
+
+Course: CS 301-03 
+Assignment Number: Assignment 3
+Team: Group 2 
+
+*/
 // The following definitions go into file ItemType.cpp. 
 #include <fstream>
 #include <iostream>
